@@ -16,4 +16,9 @@ public class ContactFormService {
         return contact.id;
     }
 
+    @Transactional
+    public void delete(long id) {
+        Contact.deleteById(id);
+    }
+
 }

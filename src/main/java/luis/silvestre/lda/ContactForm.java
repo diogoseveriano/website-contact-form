@@ -36,12 +36,16 @@ public class ContactForm {
 
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
-    public Response delete(@QueryParam("contact_id") long id, String admin) {
-        if (admin.equals(adminKey)) {
-            Contact.deleteById(id);
+    @Path("/delete")
+    public Response delete(@QueryParam("contact_id") long id, @QueryParam("admin_key") String admin) {
+        if (!adminKey.equals(admin))
+            return Response.status(403).build();
+
+        if (Contact.findByIdOptional(id).isPresent()) {
+            contactFormService.delete(id);
             return Response.ok().build();
         } else {
-            return Response.notModified().build();
+            return Response.noContent().build();
         }
     }
 }
