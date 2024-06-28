@@ -20,6 +20,7 @@ public class Contact extends PanacheEntity implements Serializable {
 
     public LocalDateTime dateTimeOfMessage;
     public boolean emailSentToCentral;
+    public LocalDateTime dateTimeOfSendEmail;
 
     public Contact from(@NotNull ContactFormRecord record) {
         this.fullName = record.clientName();

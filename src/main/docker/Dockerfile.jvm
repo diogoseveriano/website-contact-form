@@ -4,6 +4,7 @@
 # Before building the container image run:
 #
 # ./mvnw package
+# mvn clean install && mvn package && docker build -f src/main/docker/Dockerfile.jvm -t dseveriano/wc-contact-form:1.0 . && docker push dseveriano/wc-contact-form:1.0
 #
 # Then, build the image with:
 #
